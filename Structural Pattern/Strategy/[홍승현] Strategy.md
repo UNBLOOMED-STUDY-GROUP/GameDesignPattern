@@ -79,7 +79,8 @@ int main() {
 
 
 ### 전략 패턴을 사용하여 클린해진 코드
-![image](https://github.com/user-attachments/assets/c78054a6-90d6-4cff-98d9-2897de7bb654)
+![image](https://github.com/user-attachments/assets/292c41a7-4f47-4a54-9e4f-c017a93acc37)
+
 
 위의 클린하지 않은 코드를 해결하는 가장 좋은 방법은 변경시키고자 하는 행위(전략)를 직접 넘겨주는 것이다.
 
