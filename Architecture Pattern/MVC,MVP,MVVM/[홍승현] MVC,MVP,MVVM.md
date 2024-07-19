@@ -210,11 +210,3 @@ void APlayerController::OnDrinkPotion()
     }
 }
 ```
-
-# 출처 링크
-
-[유튜브] 100초 안에 MVVM
-https://youtu.be/-xTqfilaYow?si=Q00moMn-CuF6bjnb
-
-[유튜브] Unreal MVVM
-https://www.youtube.com/watch?v=1PNpRdVP_68
