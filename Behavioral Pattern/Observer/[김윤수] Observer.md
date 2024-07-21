@@ -1,7 +1,5 @@
 ### 옵저버 패턴을 써야하는 이유?
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/2fd6a694-632c-42a7-af17-936f9d0e1834/0c2f2fc9-e2a1-4505-88aa-1675d346f95e/Untitled.png)
-
 - 날씨 데이터를 이용해서 디스플레이에 띄운다고 생각해보자.
 
 ```cpp
