@@ -16,7 +16,8 @@
 
 ### 구조
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/2fd6a694-632c-42a7-af17-936f9d0e1834/ca4969c4-96d5-4845-b094-aa099629cba6/Untitled.png)
+![image](https://github.com/user-attachments/assets/4a7fb9b0-5c6c-494f-96ea-60ca0321e5a3)
+
 
 1. **프로토타입** 인터페이스는 복제 메서드들을 선언하며, 이 메서드들의 대부분은 단일 `clone` 메서드입니다.
 2. **구상 프로토타입** 클래스는 복제 메서드를 구현합니다. 원본 객체의 데이터를 복제본에 복사하는 것 외에도 이 메서드는 복제 프로세스와 관련된 일부 예외적인 경우들도 처리할 수도 있습니다. (예: 연결된 객체 복제, 재귀 종속성 풀기).
