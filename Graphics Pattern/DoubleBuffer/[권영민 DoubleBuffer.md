@@ -174,6 +174,95 @@ private:
 - `Swap()` 함수에서는 `Next` 와  `Current` 포인터를 바꾼다.
 - 이제 비디오 드라이버가 `GetBuffer()` 를 호출하면 이전에 화면에 그리기 위해 사용한 버퍼 대신 방금 그린 화면이 들어 있는 버퍼를 얻게 된다.</br>
 
+### Win API에서 더블 버퍼링 사용하기
+```cpp
+void DrawImage::CreateBitmap()
+{
+	hImg = (HBITMAP)LoadImage(NULL, str,
+		IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+	GetObject(hImg, sizeof(BITMAP), &bitImg);
+}
+void DrawImage::DrawBitmapBack(HDC hMemDC, HDC hMemDC2, HBITMAP hOldBitmap2)
+{
+	int bx, by;
+	{
+		hMemDC2 = CreateCompatibleDC(hMemDC);
+		hOldBitmap2 = (HBITMAP)SelectObject(hMemDC2, hImg);
+		bx = bitImg.bmWidth;
+		by = bitImg.bmHeight;
+		BitBlt(hMemDC, 0, 0, bx, by, hMemDC2, 0, 0, SRCCOPY);
+		SelectObject(hMemDC2, hOldBitmap2);
+		DeleteDC(hMemDC2);
+	}
+}
+void DrawImage::DrawBitmapFront(HDC hMemDC, HDC hMemDC2, HBITMAP hOldBitmap2,Player line, std::list<DrawObject*> objects, DrawObject randomImage)
+{
+	int bx, by;
+	{
+		hMemDC2 = CreateCompatibleDC(hMemDC);
+		hOldBitmap2 = (HBITMAP)SelectObject(hMemDC2, hImg);
+		bx = bitImg.bmWidth;
+		by = bitImg.bmHeight;
+		randomImage.CreateRandom(hMemDC2);
+		for (std::list<DrawObject*>::iterator it = objects.begin(); it != objects.end(); it++)
+		{
+			DrawObject *obj = *it;
+			if (it != objects.begin())
+			{
+				obj->CreateObject(line, hMemDC2);
+			}
+		}
+		TransparentBlt(hMemDC, 0, 0, bx, by, hMemDC2, 0, 0,
+			bx, by, RGB(255,0,255));
+		SelectObject(hMemDC2, hOldBitmap2);
+		DeleteDC(hMemDC2);
+	}
+}
+
+void DrawImage::DeleteBitmap()
+{
+	DeleteObject(hImg);
+}
+```
+
+```cpp
+ //doubleBuffering
+void DrawdoubleBuffering(HDC hdc, HWND hWnd) 
+{
+ HDC hMemDC = NULL;
+    HBITMAP hOldBitmap = NULL;
+    //int bx, by;
+
+    HDC hMemDC2 = NULL;
+    HBITMAP hOldBitmap2 = NULL;
+
+    //메모리 디씨 생성
+    hMemDC = CreateCompatibleDC(hdc); //복사본 만들기
+    if (!hMemDC)
+    {
+        MessageBox(hWnd, _T("CreateCompatibleDC failed!"), _T("Error"), MB_OK);
+        return;
+    }
+    if (hDoubleBufferImage == NULL)
+    {
+        hDoubleBufferImage = CreateCompatibleBitmap
+        (hdc, rectView.right, rectView.bottom);
+    }
+    
+    hOldBitmap = (HBITMAP)SelectObject(hMemDC, hDoubleBufferImage);
+    back.DrawBitmapBack(hMemDC, hMemDC2, hOldBitmap2); // bgImg
+	
+    // 앞 이미지
+    front.DrawBitmapFront(hMemDC, hMemDC2, hOldBitmap2,line,objects,object);
+    pen.PaintText(hMemDC);//UI
+    line.Draw_line(hMemDC);	
+    BitBlt(hdc, 0, 0, rectView.right, rectView.bottom, hMemDC, 0, 0, SRCCOPY);
+    
+    SelectObject(hMemDC, hOldBitmap);
+    DeleteDC(hMemDC);
+}
+```
+
 ## 그래픽스 외의 활용법
 
 - 변경 중인 상태에 접근할 수 있다 ← 이중 버퍼로 해결하려는 문제의 핵심
@@ -181,3 +270,5 @@ private:
     - 다른 스레드가 인터럽트에서 상태에 접근하는 경우
     - 어떤 상태를 변경하는 코드가 동시에 지금 변경하려는 상태를 읽는 경우
         - 인공 지능같이 객체가 서로 상호작용할 때의 경우
+
+
