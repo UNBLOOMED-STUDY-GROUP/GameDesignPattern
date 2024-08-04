@@ -421,7 +421,8 @@ Play 100
 
 과정
 
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/13de0fb3-491e-44fc-ba2f-388a1a87143f)
+
 
 ```cpp
 void EnableAudioLogging()
@@ -453,11 +454,13 @@ audio = Locator::GetAudio();
 
 - Locator에 등록된 LoggedAudio 객체 반환
 
-![alt text](image-1.png)
+![image](https://github.com/user-attachments/assets/8e27c9b9-7a39-4369-86c4-1c1c421d8a7f)
+
 
 - audio는 이제 LoggedAudio 이다.
 
-![alt text](image-2.png)
+![image](https://github.com/user-attachments/assets/69f23ba9-f0db-4458-be30-99ccbfea106a)
+
 
 ---
 
@@ -467,15 +470,18 @@ audio->PlaySound(VERY_LOUD_BANG);
 
 - wrapped에 기존의 ConsoleAudio에 저장된다.
 
-![alt text](image-3.png)
+![image](https://github.com/user-attachments/assets/5ad94b6b-33c9-4b41-9788-38d55b5cedfd)
+
 
 - audio->PlaySound(VERY_LOUD_BANG); 에서 PlaySound는 LoggedAudio의 것이 불린다.
 
-![alt text](image-4.png)
+![image](https://github.com/user-attachments/assets/0df58de3-ab88-4099-b463-7a0f87a27b40)
+
 
 - Log를 찍고 wrapped의 PlaySound도 호출된다.
 
-![alt text](image-5.png)
+![image](https://github.com/user-attachments/assets/18651de0-137c-4618-9ff1-9764ebd9bd00)
+
 
 ---
 
