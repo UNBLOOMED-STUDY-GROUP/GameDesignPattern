@@ -24,7 +24,8 @@
 
 바다 위에 있는 해적선의 망루 위에 해적이 타고 있고 해적 어깨 위에 앵무새가 있다. 해적선이 움직이면 해적, 앵무새의 위치도 같이 움직인다. 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/54558e6a-437e-4b4f-ade4-e4868de295b7/10ddd628-b3de-47e6-bbce-10c6905d61c6/image.png)
+![image](https://github.com/user-attachments/assets/c282c40b-d217-4f8a-b3f9-1161e22aef0b)
+
 
 여기서 화면에 앵무새를 그리기 위해서는 앵무새의 절대 위치를 알아야 한다. 객체를 그리기 위해서는 객체의 상대 좌표(Local Transform)가 아닌 절대 좌표(World Transform)를 알아야 한다. 
 
@@ -228,7 +229,8 @@ Invincible()
 
 언리얼 엔진 소스 코드에 dirty라고 검색하면 상당히 많은 곳에서 쓰이고 있는 것을 볼 수 있다. 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/54558e6a-437e-4b4f-ade4-e4868de295b7/fe32bccd-24ed-4f35-9c87-704d67b9e9de/image.png)
+![image](https://github.com/user-attachments/assets/7f28195e-1e2e-4181-8b11-08605a85d040)
+
 
 - Fixed up Redirector
 
@@ -240,10 +242,15 @@ Invincible()
 
 이 말은 언리얼 콘텐츠 브라우저는 항상 에셋들을 참조 업데이트를 하고 있지 않다는 것이라 추측할 수 있다.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/54558e6a-437e-4b4f-ade4-e4868de295b7/c8292ff9-d717-4b4d-9858-55ef82947012/image.png)
+![image](https://github.com/user-attachments/assets/e0d9dd14-a7f4-4dc2-bf78-07a0f2954b0b)
+
 
 - Collection.h
 
 에셋 모음집을 나타내는 Collection에도 이게 있다. 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/54558e6a-437e-4b4f-ade4-e4868de295b7/d02a9807-c503-4006-800d-5bfc55aae3df/image.png)
+![image](https://github.com/user-attachments/assets/d652c387-3381-466f-a742-f50bf130709c)
+
+
+
+
